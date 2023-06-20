@@ -1,0 +1,31 @@
+{
+  "configurations": {
+    "cpptools-gdb": {
+      "adapter": "vscode-cpptools",
+      "variables": {
+        "CMAKE": {
+          "shell": "cmake -S ${workspaceRoot} -B ${workspaceRoot}/build"
+        },
+        "MAKE": {
+          "shell": "make -C ${workspaceRoot}/build"
+        },
+        "PROJECT_NAME": {
+          "shell": "cat ${workspaceRoot}/build/ProjectName.txt"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/build/${PROJECT_NAME}",
+        "stopAtEntry": true,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      }
+    }
+  }
+}
